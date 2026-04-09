@@ -1,0 +1,20 @@
+from time import time
+
+password = input("Enter password: ")
+start_time = time()
+letters = "abcdefghijklmnopqrstuvwxyz"
+numbers = "0123456789"
+special_characters = "!@#$%^&*()-_=+[]{}|;:,.<>?/"
+chars = letters + numbers + special_characters
+
+guess = []
+for val in range(12):
+    a = [i for i in chars]
+    for y in range(val):
+        a = [x + i for i in chars for x in a]
+    guess = guess + a
+    if password in guess:
+        break
+
+print(f"{password=} :{len(guess)} guesses")
+print(f"Runtime: {str(time() - start_time)}")
